@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Box</title>
+  <style>
+    body, html {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+  }
+  
+  #container {
+    text-align: center;
+  }
+  
+  .box {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+  }
+  
+  #Text{
+    font-size: 26px;
+    color:black;
+  }
+  #bgcolor{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  #red, #blue, #black, #green{
+    padding: 20px;
+    border-radius: 50px;
+    border: 2px solid black;
+  }
+  #red{
+    background-color: red;
+  }
+  #black{
+    background-color: black;
+  }
+  #green{
+    background-color: green;
+  }
+  #blue{
+    background-color: blue;
+  }
+  
+
+  .opbtn{
+    margin-top: 20px;
+  }
+  .opbtn button{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 2%;
+  }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="box">
+      <select id="select" onchange="handleChange()">
+        <option value="">Select an option</option>
+        <option value="React">React</option>
+        <option value="Node">Node</option>
+        <option value="Angular">Angular</option>
+        <option value="MongoDB">MongoDB</option>
+      </select>
+      <p id="Text"></p>
+      <div id="bgcolor">
+        <button id="red" onclick="btn1()"></button>
+        <button id="blue" onclick="btn2()"></button>
+        <button id="green" onclick="btn3()"></button>
+        <button id="black" onclick="btn4()"></button>
+      </div>
+      <div class="opbtn">
+        <button onclick="upp()">upper</button>
+        <button onclick="low()" >lower</button>
+        <button onclick="inc()">+</button>
+        <button onclick="dec()">-</button>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function handleChange(){
+    let tech = document.getElementById("select").value;
+
+    if(tech=="React"){
+        document.getElementById("Text").innerText = "this is react";
+    }else if(tech=="Node"){
+        document.getElementById("Text").innerText = "this is node";
+    }else if(tech=="Angular"){
+        document.getElementById("Text").innerText = "this is angular";
+    }else if(tech=="MongoDB"){
+        document.getElementById("Text").innerText = "this is mongodb";
+    }
+}
+function btn1(){
+    document.body.style.backgroundColor = "red";
+}
+function btn4(){
+    document.body.style.backgroundColor = "black";
+}
+function btn2(){
+    document.body.style.backgroundColor = "blue";
+}
+function btn3(){
+    document.body.style.backgroundColor = "green";
+}
+
+let fs = 26;
+
+function inc(){
+    fs+=1
+    document.getElementById("Text").style.fontSize = `${fs}px`;
+}
+
+function dec(){
+    fs-=1
+    document.getElementById("Text").style.fontSize = `${fs}px`;
+}
+function low(){
+    let t = document.getElementById("Text").textContent;
+    let result = t.toLowerCase();
+    document.getElementById("Text").textContent = result;
+}
+function upp(){
+    let t = document.getElementById("Text").textContent;
+    let result = t.toUpperCase();
+    document.getElementById("Text").textContent = result;
+}
+  </script>
+</body>
+</html>
